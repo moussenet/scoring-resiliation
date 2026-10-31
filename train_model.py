@@ -14,8 +14,8 @@ df = pd.read_csv('../data/dataset_assurance_ML.csv')
 
 # 2. Variables
 TARGET = 'Résiliation'
-num_cols = ['Âge', 'Salaire Annuel (Fcfa)', 'Prime Annuelle (Fcfa)', 'Ancienneté (mois)',
-            'Coeff. Bonus-Malus', 'Nb Sinistres (3 ans)', 'Montant Sinistres (Fcfa)',
+num_cols = ['Âge', 'Salaire Annuel (€)', 'Prime Annuelle (€)', 'Ancienneté (mois)',
+            'Coeff. Bonus-Malus', 'Nb Sinistres (3 ans)', 'Montant Sinistres (€)',
             'Score Risque (0-100)']
 cat_cols = ['Type Contrat', 'Catégorie Prof.', 'Usage Véhicule', 'Dernier Sinistre']
 X = df[num_cols + cat_cols]
