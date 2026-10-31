@@ -2,7 +2,7 @@ import json, joblib
 import pandas as pd
 import streamlit as st
 
-st.set_page_config(page_title='Scoring Résiliation', page_icon='🚗', layout='wide')
+st.set_page_config(page_title='Scoring Résiliation', page_icon='', layout='wide')
 
 
 @st.cache_resource
@@ -17,11 +17,11 @@ pipeline, meta = charger_modele()
 num_cols, cat_cols = meta['num_cols'], meta['cat_cols']
 rng, cats = meta['num_ranges'], meta['cat_values']
 
-st.title('🚗 Scoring de résiliation — Assurance Auto')
+st.title(' Scoring de résiliation — Assurance Auto')
 st.caption(f"Modèle : {meta['modele']}  ·  AUC test : {meta['auc_test']}")
 
 # ---------- Barre latérale : variables numériques ----------
-st.sidebar.header('👤 Profil du client')
+st.sidebar.header(' Profil du client')
 
 
 def curseur(col, step=1.0, fmt=None):
@@ -50,7 +50,7 @@ for col in cat_cols:
 SEUIL_RISQUE = 0.55
 SEUIL_MODERE = 0.40
 
-if st.button('🔮 Prédire', type='primary', use_container_width=True):
+if st.button(' Prédire', type='primary', use_container_width=True):
     df_client = pd.DataFrame([client])[num_cols + cat_cols]
     proba = float(pipeline.predict_proba(df_client)[0, 1])
 
@@ -58,11 +58,11 @@ if st.button('🔮 Prédire', type='primary', use_container_width=True):
     with col1:
         st.metric('Probabilité de résiliation', f'{proba:.0%}')
         if proba >= SEUIL_RISQUE:
-            st.error('⚠️ Client À RISQUE — action de rétention conseillée')
+            st.error(' Client À RISQUE — action de rétention conseillée')
         elif proba >= SEUIL_MODERE:
-            st.warning('🟠 Risque modéré — à surveiller')
+            st.warning(' Risque modéré — à surveiller')
         else:
-            st.success('✅ Client fidèle — risque faible')
+            st.success(' Client fidèle — risque faible')
     with col2:
         st.write('Niveau de risque')
         st.progress(proba)
@@ -78,7 +78,7 @@ if st.button('🔮 Prédire', type='primary', use_container_width=True):
         imp = (pd.Series(model.feature_importances_, index=noms)
                  .sort_values(ascending=False).head(8))
         imp.index = [n.split('__', 1)[1] for n in imp.index]
-        st.subheader('📊 Les 8 variables les plus influentes du modèle')
+        st.subheader(' Les 8 variables les plus influentes du modèle')
         st.bar_chart(imp)
 else:
-    st.info('👈 Ajustez le profil dans la barre latérale, puis cliquez sur Prédire.')
+    st.info(' Ajustez le profil dans la barre latérale, puis cliquez sur Prédire.')
