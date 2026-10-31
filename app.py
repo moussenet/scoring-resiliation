@@ -33,12 +33,12 @@ def curseur(col, step=1.0, fmt=None):
 
 client = {}
 client['Âge']                   = curseur('Âge', 1.0, '%d')
-client['Salaire Annuel (€)']    = curseur('Salaire Annuel (€)', 500.0, '%d')
-client['Prime Annuelle (€)']    = curseur('Prime Annuelle (€)', 10.0, '%d')
+client['Salaire Annuel (Fcfa)']    = curseur('Salaire Annuel (Fcfa)', 500.0, '%d')
+client['Prime Annuelle (Fcfa)']    = curseur('Prime Annuelle (Fcfa)', 10.0, '%d')
 client['Ancienneté (mois)']     = curseur('Ancienneté (mois)', 1.0, '%d')
 client['Coeff. Bonus-Malus']    = curseur('Coeff. Bonus-Malus', 0.01, '%.2f')
 client['Nb Sinistres (3 ans)']  = curseur('Nb Sinistres (3 ans)', 1.0, '%d')
-client['Montant Sinistres (€)'] = curseur('Montant Sinistres (€)', 100.0, '%d')
+client['Montant Sinistres (Fcfa)'] = curseur('Montant Sinistres (Fcfa)', 100.0, '%d')
 client['Score Risque (0-100)']  = curseur('Score Risque (0-100)', 1.0, '%d')
 
 # ---------- Barre latérale : variables catégorielles ----------
